@@ -18,4 +18,28 @@ function hashPlusCount(str) {
   return [hashCount, plusCount];
 }
 
-console.log(hashPlusCount("##+++#"));
+//console.log(hashPlusCount("##+++#"));
+
+// 2/25/20
+// Create a function to convert an array of percentages to their decimal equivalents.
+
+//convertToDecimal(["33%", "98.1%", "56.44%", "100%"]) ➞ [0.33, 0.981, 0.5644, 1]
+
+// first attempt
+
+function convertToDecimal(arr) {
+  let resultsArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    let decimal = parseFloat(arr[i].substring(0, arr[i].length - 1)) / 100;
+    resultsArr.push(decimal);
+  }
+  return resultsArr;
+}
+
+// optimized
+
+function convertToDecimal2(arr) {
+  return arr.map(x => parseFloat(x) / 100);
+}
+
+console.log(convertToDecimal2(["33%", "98.1%", "56.44%", "100%"]));
