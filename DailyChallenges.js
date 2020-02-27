@@ -59,4 +59,37 @@ function validatePIN_optimized(pin) {
   return /^(\d{4}|\d{6})$/.test(pin);
 }
 
-console.log(validatePIN_optimized("1234"));
+//console.log(validatePIN_optimized("1234"));
+
+// ----------------------------------------
+
+// Create a function that takes a number as input and returns true if the sum of its digits has the same parity as the entire number. Otherwise, return false.
+// Parity is whether a number is even or odd. If the sum of the digits is even and the number itself is even, return true. The same goes if the number is odd and so is the sum of its digits.
+
+function parityAnalysis(num) {
+  let arr = num.toString().split("");
+  let arrInt = arr.map(x => parseInt(x));
+  let sum = 0;
+  for (let i = 0; i < arrInt.length; i++) {
+    sum += arrInt[i];
+  }
+
+  return sum % 2 == num % 2;
+}
+
+//console.log(parityAnalysis(243));
+
+// -------------------------------------
+
+// Create a function that takes a string as an argument and returns a coded (h4ck3r 5p34k) version of the string.
+// In order to work properly, the function should replace all 'a's with 4, 'e's with 3, 'i's with 1, 'o's with 0, and 's's with 5.
+
+// hackerSpeak("javascript is cool") ➞ "j4v45cr1pt 15 c00l"
+function hackerSpeak(str) {}
+
+hackerSpeak("javascript is cool");
+
+// ---------------------------------------
+
+// see if the average of an array is a whole number
+// isInteger() exists
