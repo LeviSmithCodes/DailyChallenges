@@ -85,11 +85,96 @@ function parityAnalysis(num) {
 // In order to work properly, the function should replace all 'a's with 4, 'e's with 3, 'i's with 1, 'o's with 0, and 's's with 5.
 
 // hackerSpeak("javascript is cool") ➞ "j4v45cr1pt 15 c00l"
-function hackerSpeak(str) {}
 
-hackerSpeak("javascript is cool");
+// 02.27.20
+
+function hackerSpeak(str) {
+  let returnArr = [];
+  let arr = str.split("");
+  for (let i = 0; i < arr.length; i++) {
+    switch (arr[i]) {
+      case "a":
+        returnArr.push("4");
+        break;
+      case "e":
+        returnArr.push("3");
+        break;
+      case "i":
+        returnArr.push("1");
+        break;
+      case "o":
+        returnArr.push("0");
+        break;
+      case "s":
+        returnArr.push("5");
+        break;
+      default:
+        returnArr.push(arr[i]);
+        break;
+    }
+  }
+  return returnArr.join("");
+}
+
+// console.log(hackerSpeak("javascript is cool"));
 
 // ---------------------------------------
 
 // see if the average of an array is a whole number
 // isInteger() exists
+
+// ----------------------------------------
+// Reverse a string
+
+function reverse(str) {
+  return str
+    .split("")
+    .reverse()
+    .join("");
+}
+
+// without .reverse()
+function reverse2(str) {
+  let returnArr = [];
+  let arr = str.split("");
+  for (let i = arr.length - 1; i >= 0; i--) {
+    returnArr.push(arr[i]);
+  }
+  return returnArr.join("");
+}
+
+//console.log(reverse2("Hello!"));
+
+// ------------------------------------
+
+// Create a function that calculates what percentage of the box is filled in. Give your answer as a string percentage rounded to the nearest integer.
+
+//percentFilled([
+//   "#######",
+//   "#o oo #",
+//   "#######"
+// ]) ➞ "60%"
+
+function percentFilled(arr) {
+  // find box dimensions
+  // count length of first item vs length of array? Subtract two from each and multiply together?
+  let width = arr[0].length;
+  let height = arr.length;
+  let availableArea = (width - 2) * (height - 2);
+
+  // find number of spaces filled
+  let elemCount = 0;
+  for (let i = 0; i < arr.length; i++) {
+    let elemArr = arr[i].split("");
+    for (let j = 0; j < elemArr.length; j++) {
+      if (elemArr[j] == "o") {
+        elemCount++;
+      }
+    }
+  }
+  // calculate and return percent filled
+  return Math.round((elemCount / availableArea) * 100).toString() + "%";
+}
+
+console.log(percentFilled(["####", "#  #", "#o #", "####"]));
+//➞ "25%"
