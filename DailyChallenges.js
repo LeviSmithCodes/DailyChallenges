@@ -176,5 +176,69 @@ function percentFilled(arr) {
   return Math.round((elemCount / availableArea) * 100).toString() + "%";
 }
 
-console.log(percentFilled(["####", "#  #", "#o #", "####"]));
+function percentFilledWes(arr) {
+  let numo = 0;
+  for (let i = 1; i < arr.length - 1; i++) {
+    let count = (arr[i].match(/o/g) || []).length;
+    numo += count;
+  }
+  return Math.round((numo / ((arr[0].length - 2) * (arr.length - 2))) * 100);
+}
+
+console.log(percentFilledWes(["####", "#  #", "#o #", "####"]));
 //➞ "25%"
+
+// -------------------------------
+
+// 2.28.20
+
+function indexOfCaps(str) {
+  let x = [];
+  for (let i = 0; i <= str.length - 1; i++) {
+    if (str[i] === str[i].toUpperCase() && /[A-Z]/.test(str[i])) {
+      x.push(i);
+    }
+  }
+  return x;
+}
+
+//console.log(indexOfCaps("EdAbIT$"));
+
+// --------------------------------------------
+// given an array of numbers, return an array with grouped sub-arrays
+// [1,3,5,5] -> [[1],[3],[5,5]]
+
+function groupElems(arr) {
+  let returnArr = [[arr[0]]];
+  for (let i = 1; i < arr.length; i++) {
+    let iAdded = false;
+    for (let j = 0; j < returnArr.length; j++) {
+      if (arr[i] == returnArr[j][0]) {
+        returnArr[j].push(arr[i]);
+        iAdded = true;
+        break;
+      }
+    }
+    if (!iAdded) {
+      returnArr.push([arr[i]]);
+    }
+  }
+  return returnArr;
+}
+
+function groupElems2(arr) {
+  // create dictionary and return array
+  let finalArr = [];
+  let dict = {};
+  let indexCounter = 0;
+  for (let i = 0; i < arr.length; i++) {
+    // if not in dictionary, add key and value and increment index counter
+    if (!dict[arr[i]]) {
+    }
+    // if in dictionary, add to index in array
+  }
+  return finalArr;
+  // return array
+}
+
+//console.log(groupElems2([0, 0, 1, 3, 5, 5, 4, 5]));
