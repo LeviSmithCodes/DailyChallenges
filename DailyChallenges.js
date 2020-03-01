@@ -185,7 +185,7 @@ function percentFilledWes(arr) {
   return Math.round((numo / ((arr[0].length - 2) * (arr.length - 2))) * 100);
 }
 
-console.log(percentFilledWes(["####", "#  #", "#o #", "####"]));
+//console.log(percentFilledWes(["####", "#  #", "#o #", "####"]));
 //➞ "25%"
 
 // -------------------------------
@@ -233,12 +233,53 @@ function groupElems2(arr) {
   let indexCounter = 0;
   for (let i = 0; i < arr.length; i++) {
     // if not in dictionary, add key and value and increment index counter
-    if (!dict[arr[i]]) {
+    if (arr[i] == 7) {
+      console.log(dict[arr[i]]);
     }
-    // if in dictionary, add to index in array
+    // dict[arr[i]] returns 0, so !dict[arr[i]] returns true instead of false.
+    if (dict[arr[i]] == undefined) {
+      dict[arr[i]] = indexCounter;
+      finalArr.push([arr[i]]);
+      indexCounter++;
+    } else {
+      // if in dictionary, add to index in array
+      finalArr[dict[arr[i]]].push(arr[i]);
+    }
   }
   return finalArr;
   // return array
 }
 
-//console.log(groupElems2([0, 0, 1, 3, 5, 5, 4, 5]));
+//console.log(groupElems2([7, 6, 7, 1, 3, 5, 5, 4, 5, 6, 6, 6]));
+
+// -------------------------------------
+// 02.29.20
+
+//Create a function that takes in an array of days as input and the number of days to increment by. Return an array of days after n number of days has passed.
+function afterNDays(arr, num) {
+  // create array of days in order
+  let days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ];
+  let resultArr = [];
+  // loop through array
+  for (let i = 0; i < arr.length; i++) {
+    // find index within days
+    let indexOfI = days.indexOf(arr[i]);
+    // find day after number of days (modulo 7)
+    let resultIndex = (indexOfI + num) % 7;
+    // add to new array
+    resultArr.push(days[resultIndex]);
+  }
+  // return new array
+  return resultArr;
+}
+
+console.log(afterNDays(["Thursday", "Monday"], 4));
+//➞ ["Monday", "Friday"]
