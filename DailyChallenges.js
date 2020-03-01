@@ -281,5 +281,31 @@ function afterNDays(arr, num) {
   return resultArr;
 }
 
-console.log(afterNDays(["Thursday", "Monday"], 4));
+//console.log(afterNDays(["Thursday", "Monday"], 4));
 //➞ ["Monday", "Friday"]
+
+// --------------------------------
+// 03.01.20
+
+// Create a function that takes an integer and outputs an n x n square solely consisting of the integer n.
+
+function squarePatch(n) {
+  let oneRow = [];
+  for (let i = 0; i < n; i++) {
+    oneRow.push(n);
+  }
+  let allRows = [];
+  for (let i = 0; i < n; i++) {
+    allRows.push(oneRow);
+  }
+  return allRows;
+}
+
+console.log(squarePatch(5));
+// this coinsole logs real weird :S
+
+//squarePatch(3) ➞ [
+//   [3, 3, 3],
+//   [3, 3, 3],
+//   [3, 3, 3]
+// ]
