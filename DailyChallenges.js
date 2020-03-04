@@ -327,4 +327,31 @@ function unique(str) {
   return unique;
 }
 
-console.log(unique("asdfghjkl"));
+// 3/4/2020
+
+function unique2(str) {
+  let unique = true;
+  // make a for loop, twice. INCREASE IN BIG O
+  for (let i = 0; i < str.length; i++) {
+    // count appearances of letter
+    let count = 0;
+    for (let j = 0; j < str.length; j++) {
+      if (str[i] == str[j]) {
+        count++;
+      }
+    }
+    // if count greater than one return false
+    if (count > 1) {
+      unique = false;
+      return unique;
+    }
+  }
+  return unique;
+}
+
+console.log(unique2("asdfghjkl"));
+
+// -------------------------------------------------------
+// A number is left-heavy if the digits on the left side are larger than the digits on the right. It is right-heavy if the digits on the right side are larger than the digits on the left. Else, it is balanced.
+
+// Create a function that takes in an integer and classifies it into one of the three mutually exclusive categories: left, right or balanced. For inputs with an odd number of integers, ignore the fulcrum (the middle number).
