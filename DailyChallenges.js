@@ -301,7 +301,7 @@ function squarePatch(n) {
   return allRows;
 }
 
-console.log(squarePatch(5));
+//console.log(squarePatch(5));
 // this coinsole logs real weird :S
 
 //squarePatch(3) ➞ [
@@ -309,3 +309,22 @@ console.log(squarePatch(5));
 //   [3, 3, 3],
 //   [3, 3, 3]
 // ]
+
+// -----------------------------------------
+// 3/3/2020
+// Cracking the Coding Interview:
+// impliment an algorithm to determine if a string has all unique characters. what if you cannot use additional data structures?
+
+function unique(str) {
+  let unique = true;
+  for (let i = 0; i < str.length; i++) {
+    // ... this isn't working
+    if (str.match(/ + str[i] /g || []).length >= 2) {
+      unique = false;
+      break;
+    }
+  }
+  return unique;
+}
+
+console.log(unique("asdfghjkl"));
