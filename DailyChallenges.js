@@ -349,9 +349,71 @@ function unique2(str) {
   return unique;
 }
 
+// [] how can I use a data structure to reduce time complexity?
+
 console.log(unique2("asdfghjkl"));
 
 // -------------------------------------------------------
 // A number is left-heavy if the digits on the left side are larger than the digits on the right. It is right-heavy if the digits on the right side are larger than the digits on the left. Else, it is balanced.
 
 // Create a function that takes in an integer and classifies it into one of the three mutually exclusive categories: left, right or balanced. For inputs with an odd number of integers, ignore the fulcrum (the middle number).
+
+function seesaw(num) {
+  // check if null / undefined or single number, return balanced if true
+  if (num == undefined || num == null || num.toString().length == 1) {
+    return "balanced";
+  }
+  // convert to string
+  num = num.toString();
+  let left;
+  let right;
+  // divide number based on length, accounting for odd or even
+  if (num.length % 2 == 0) {
+    left = num.slice(0, num.length / 2);
+    right = num.slice(num.length / 2);
+    console.log([left, right]);
+  } else {
+    left = num.slice(0, Math.floor(num.length / 2));
+    right = num.slice(Math.floor(num.length / 2) + 1);
+    console.log([left, right]);
+  }
+  left = parseInt(left);
+  right = parseInt(right);
+  // compare numbers (converting to int), returning the appropriate string
+  if (left == right) {
+    return "balanced";
+  } else if (left > right) {
+    return "left";
+  } else {
+    return "right";
+  }
+}
+
+//onsole.log(seesaw("586585"));
+// ---------------------------------------------
+//03.06.20
+//Create a function that takes an array of booleans that represent whether or not a player has logged into a game that day. Output the longest streak of consecutive logged in days.
+
+// could turn into a string and split on false? seems too hackey.
+
+function dailyStreak(arr) {
+  // initialize count at 0
+  let count = 0;
+  let totalCount = 0;
+  // loop through array
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] == true) {
+      count++;
+    } else {
+      count = 0;
+    }
+    if (count > totalCount) {
+      totalCount = count;
+    }
+  }
+  // return count
+  return totalCount;
+}
+
+console.log(dailyStreak([true, true, false, true, true, true]));
+// ➞ 3
