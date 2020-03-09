@@ -433,5 +433,26 @@ function cumulativeSum(arr) {
   return returnArr;
 }
 
-console.log(cumulativeSum([3, 3, -2, 408, 3, 3]));
+//console.log(cumulativeSum([3, 3, -2, 408, 3, 3]));
 //➞ [3, 6, 4, 412, 415, 418]
+
+// ----------------------------------------------
+//You are given 2 out of 3 angles in a triangle, in degrees.
+
+//Write a function that classifies the missing angle as either "acute", "right", or "obtuse" based on its degrees.
+
+function missingAngle(num1, num2) {
+  // determine third angle
+  let missingAngle = 180 - num1 - num2;
+  // use an if-else chain to return correct string
+  if (missingAngle == 90) {
+    return "right";
+  } else if (missingAngle > 90) {
+    return "obtuse";
+  } else {
+    return "acute";
+  }
+}
+
+console.log(missingAngle(27, 59));
+//➞ "obtuse"
