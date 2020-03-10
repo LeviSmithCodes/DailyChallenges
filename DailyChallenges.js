@@ -454,5 +454,35 @@ function missingAngle(num1, num2) {
   }
 }
 
-console.log(missingAngle(27, 59));
+//console.log(missingAngle(27, 59));
 //➞ "obtuse"
+
+// --------------------------------------------------------
+// 3.9.20
+// Create a function that takes an array and determines whether it's strictly increasing, strictly decreasing, or neither.
+
+function check(arr) {
+  // loop through checking for increase, then decrease
+  let increasing = true;
+  let decreasing = true;
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] < arr[i + 1]) {
+      decreasing = false;
+    } else if (arr[i] > arr[i + 1]) {
+      increasing = false;
+    } else {
+      decreasing = false;
+      increasing = false;
+    }
+  }
+  if (increasing == true) {
+    return "increasing";
+  } else if (decreasing == true) {
+    return "decreasing";
+  } else {
+    return "neither";
+  }
+}
+
+console.log(check([3, 2, 1]));
+// ➞ "increasing"
