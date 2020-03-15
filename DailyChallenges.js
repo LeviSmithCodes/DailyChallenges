@@ -484,5 +484,45 @@ function check(arr) {
   }
 }
 
-console.log(check([3, 2, 1]));
+//console.log(check([3, 2, 1]));
 // ➞ "increasing"
+
+// ----------------------------------------------
+// 3/14/20
+//Create a function that takes an array of positive and negative numbers. Return an array where the first element is the count of positive numbers and the second element is the sum of negative numbers.
+
+function countPosSumNeg(arr) {
+  if (arr.length == 0) {
+    return [];
+  }
+  let count = 0;
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 0) {
+      count++;
+    } else {
+      sum += arr[i];
+    }
+  }
+
+  return [count, sum];
+}
+
+//console.log(
+//countPosSumNeg([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15])
+//);
+//➞ [10, -65]
+
+// ----------------------------------------
+// switch values of x and y without creating a third variable
+
+function switchxandy() {
+  let x = 1;
+  let y = 2;
+  x = x + y;
+  y = x - y;
+  x = x - y;
+  console.log(x, y);
+}
+
+switchxandy();
