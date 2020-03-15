@@ -525,4 +525,34 @@ function switchxandy() {
   console.log(x, y);
 }
 
-switchxandy();
+//switchxandy();
+
+// -------------------------------------------
+// 3.15.20
+
+//Write a function that takes a string and determines whether it's a palindrome or not. The function should return a boolean (true or false value).
+
+//Should be case insensitive.
+//Special characters (punctuation or spaces) should be ignored.
+
+function isPalindrome(str) {
+  // convert to lowercase
+  str = str.toLowerCase();
+  // ignore special characters
+  str = str.match(/[a-zA-Z]/g).join("");
+  // reverse string, compare to original
+  console.log(str);
+  let rev = str
+    .split("")
+    .reverse()
+    .join("");
+  // return value
+  return str == rev;
+}
+console.log(isPalindrome("kayak"));
+console.log(
+  isPalindrome(
+    "A man, a plan, a cat, a ham, a yak, a yam, a hat, a canal-Panama!"
+  )
+);
+//➞ true
