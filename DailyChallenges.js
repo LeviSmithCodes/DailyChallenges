@@ -558,7 +558,7 @@ function isPalindrome(str) {
 //➞ true
 
 // --------------------------------------------
-
+//3.16.20
 // Create a function to multiply all of the values in an array by the amount of values in the given array.
 
 function multiplyByLength(arr) {
