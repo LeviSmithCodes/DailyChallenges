@@ -549,10 +549,26 @@ function isPalindrome(str) {
   // return value
   return str == rev;
 }
-console.log(isPalindrome("kayak"));
-console.log(
-  isPalindrome(
-    "A man, a plan, a cat, a ham, a yak, a yam, a hat, a canal-Panama!"
-  )
-);
+//console.log(isPalindrome("kayak"));
+//console.log(
+//   isPalindrome(
+//     "A man, a plan, a cat, a ham, a yak, a yam, a hat, a canal-Panama!"
+//   )
+// );
 //➞ true
+
+// --------------------------------------------
+
+// Create a function to multiply all of the values in an array by the amount of values in the given array.
+
+function multiplyByLength(arr) {
+  let returnArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    returnArr.push(arr[i] * arr.length);
+  }
+  return returnArr;
+}
+
+console.log(multiplyByLength([2, 3, 1, 0]));
+
+//➞ [8, 12, 4, 0]
