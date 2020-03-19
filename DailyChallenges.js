@@ -569,6 +569,33 @@ function multiplyByLength(arr) {
   return returnArr;
 }
 
-console.log(multiplyByLength([2, 3, 1, 0]));
+//console.log(multiplyByLength([2, 3, 1, 0]));
 
 //➞ [8, 12, 4, 0]
+
+// -----------------------------------------
+// 3.18.20 & 3.19.20
+
+//Given a string of letters in the English alphabet, return the letter that's missing from the string. The missing letter will make the string be in alphabetical order (from A to Z).
+
+//If there are no missing letters in the string, return "No Missing Letter".
+
+function missingLetter(str) {
+  // make array of alphabet and str
+  let alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let alphabetArr = alphabet.split("");
+  let strArr = str.split("");
+  // locate index of first letter
+  let firstIndex = alphabetArr.indexOf(strArr[0]);
+  // check resulting letters for existance?
+  for (let i = 0; i < strArr.length; i++) {
+    if (strArr[i] != alphabetArr[firstIndex + i]) {
+      return alphabetArr[firstIndex + i];
+    }
+  }
+  // return missing letter
+  return "No Missing Letter";
+}
+
+console.log(missingLetter("abdefg"));
+//➞ "c"
