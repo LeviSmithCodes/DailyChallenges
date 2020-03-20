@@ -597,5 +597,35 @@ function missingLetter(str) {
   return "No Missing Letter";
 }
 
-console.log(missingLetter("abdefg"));
+//console.log(missingLetter("abdefg"));
 //➞ "c"
+
+//-------------------------------------------------
+// 3/20/20
+//In each input array, every number repeats at least once, except for two.
+
+//Write a function that returns the two unique numbers.
+function returnUnique(arr) {
+  // create a dictionary
+  let dict = {};
+  // for loop. if exists, increase value. if doesn't, initialize at one.
+  for (let i = 0; i < arr.length; i++) {
+    if (dict.hasOwnProperty(arr[i])) {
+      dict[arr[i]] += 1;
+    } else {
+      dict[arr[i]] = 1;
+    }
+  }
+  // create an array from the two numbers that are unique
+  const objArr = Object.entries(dict);
+  let returnArr = [];
+  for (let i = 0; i < objArr.length; i++) {
+    if (objArr[i][1] == 1) {
+      returnArr.push(parseFloat(objArr[i][0]));
+    }
+  }
+  return returnArr;
+}
+
+console.log(returnUnique([9, 5, 6, 8, 7, 7, 1, 1, 1, 1, 1, 9, 8]));
+// ➞ [5, 6]
