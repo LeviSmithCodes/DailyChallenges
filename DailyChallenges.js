@@ -627,5 +627,69 @@ function returnUnique(arr) {
   return returnArr;
 }
 
-console.log(returnUnique([9, 5, 6, 8, 7, 7, 1, 1, 1, 1, 1, 9, 8]));
+// console.log(returnUnique([9, 5, 6, 8, 7, 7, 1, 1, 1, 1, 1, 9, 8]));
 // ➞ [5, 6]
+
+// ------------------------------------
+
+// 3/21/20
+
+//In the world of birding there are four-letter codes for the common names of birds. These codes are created by some simple rules:
+
+// If the bird's name has only one word, the code takes the first four letters of that word.
+// If the name is made up of two words, the code takes the first two letters of each word.
+// If the name is made up of three words, the code is created by taking the first letter from the first two words and the first two letters from the third word.
+// If the name is four words long, the code uses the first letter from all the words.
+
+function birdCode(arr) {
+  // initialize return array
+  let returnArr = [];
+  // for each entry, push code
+  for (let i = 0; i < arr.length; i++) {
+    // split string on spaces and hyphens
+    let strArr = arr[i].split(/-| /);
+    // initialize return string
+    let returnStr = "";
+    // initialize second for loop
+    for (let j = 0; j < strArr.length; j++) {
+      // case switch for array length to build string
+      switch (strArr.length) {
+        case 1:
+          returnStr += strArr[j].substring(0, 4).toUpperCase();
+          break;
+        case 2:
+          returnStr += strArr[j].substring(0, 2).toUpperCase();
+          break;
+        case 3:
+          if (j == 0) {
+            returnStr += strArr[0].substring(0, 1).toUpperCase();
+          }
+          if (j == 1) {
+            returnStr += strArr[1].substring(0, 1).toUpperCase();
+          }
+          if (j == 2) {
+            returnStr += strArr[2].substring(0, 2).toUpperCase();
+          }
+          break;
+        case 4:
+          returnStr += strArr[j].substring(0, 1).toUpperCase();
+          break;
+      }
+    }
+    // concat letters in uppercase as appropriate
+    returnArr.push(returnStr);
+  }
+  // return arr
+  return returnArr;
+}
+
+console.log(
+  birdCode([
+    "Black-Capped Chickadee",
+    "Common Tern",
+    "Robin",
+    "Heavy-Laden European Swallow"
+  ])
+);
+//➞ ["BCCH", "COTE"]
+// ALTERNATIVE: could have just returned a concat string, like return b[0][0] + b[0][1] + b[0][2] + b[0][3];
