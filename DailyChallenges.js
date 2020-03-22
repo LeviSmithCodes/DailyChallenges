@@ -683,13 +683,63 @@ function birdCode(arr) {
   return returnArr;
 }
 
-console.log(
-  birdCode([
-    "Black-Capped Chickadee",
-    "Common Tern",
-    "Robin",
-    "Heavy-Laden European Swallow"
-  ])
-);
+// console.log(
+//   birdCode([
+//     "Black-Capped Chickadee",
+//     "Common Tern",
+//     "Robin",
+//     "Heavy-Laden European Swallow"
+//   ])
+// );
 //➞ ["BCCH", "COTE"]
 // ALTERNATIVE: could have just returned a concat string, like return b[0][0] + b[0][1] + b[0][2] + b[0][3];
+
+// -------------------------------------------------------
+// 3.22.20
+
+// Waterballoon soak
+// The input array will always be the exact length it takes for there to be exactly one border zero.
+// Length of input array is always odd.
+
+function pop(arr) {
+  // find index of focus
+
+  let centerIndex = arr.indexOf(Math.max(...arr));
+  console.log("center index: " + centerIndex);
+  // have equation relating index to desired value
+  for (let i = 0; i < arr.length; i++) {
+    if (i < centerIndex) {
+      // arr[i] = CenterValue - Centervalue - 1
+      // YIKES this was a braintwister.
+      arr[i] = arr[centerIndex] - (centerIndex - i);
+    } else if (i > centerIndex) {
+      arr[i] = centerIndex - (i - centerIndex);
+    }
+  }
+  // loop over the elements and change/add them
+  return arr;
+}
+
+console.log(pop([0, 0, 0, 0, 4, 0, 0, 0, 0]));
+// center index: 4
+// index of first number to be changed: 1
+//  difference: 3
+// n = n - (n-1)...?
+// 1 = 4 - 3
+// value of change in number
+// 1
+//
+// ➞ [0, 1, 2, 3, 4, 3, 2, 1, 0]
+
+console.log(pop([0, 0, 0, 3, 0, 0, 0]));
+// ➞ [0, 1, 2, 3, 2, 1, 0]
+
+console.log(pop([0, 0, 2, 0, 0]));
+// ➞ [0, 1, 2, 1, 0]
+
+console.log(pop([0]));
+// ➞ [0]
+
+// NEEDED TO READ NOTES
+// The input array will always be the exact length it takes for there to be exactly one border zero.
+// Length of input array is always odd.
