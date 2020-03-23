@@ -720,7 +720,17 @@ function pop(arr) {
   return arr;
 }
 
-console.log(pop([0, 0, 0, 0, 4, 0, 0, 0, 0]));
+// ALTERNATE
+function pop(state) {
+  const pop = state =>
+    state.map((num, i) => {
+      if (num !== 0) return num;
+      if (i > state.length / 2) return state.length - i - 1;
+      return i;
+    });
+}
+
+// console.log(pop([0, 0, 0, 0, 4, 0, 0, 0, 0]));
 // center index: 4
 // index of first number to be changed: 1
 //  difference: 3
@@ -731,15 +741,36 @@ console.log(pop([0, 0, 0, 0, 4, 0, 0, 0, 0]));
 //
 // ➞ [0, 1, 2, 3, 4, 3, 2, 1, 0]
 
-console.log(pop([0, 0, 0, 3, 0, 0, 0]));
+// console.log(pop([0, 0, 0, 3, 0, 0, 0]));
 // ➞ [0, 1, 2, 3, 2, 1, 0]
 
-console.log(pop([0, 0, 2, 0, 0]));
+// console.log(pop([0, 0, 2, 0, 0]));
 // ➞ [0, 1, 2, 1, 0]
 
-console.log(pop([0]));
+// console.log(pop([0]));
 // ➞ [0]
 
 // NEEDED TO READ NOTES
 // The input array will always be the exact length it takes for there to be exactly one border zero.
 // Length of input array is always odd.
+
+// ------------------------------------
+// 3/23/20
+// Write a function that returns the longest common ending between two strings.
+
+function longestCommonEnding(str1, str2) {
+  let returnStrArr = [];
+  // loop through both from end and add as matched (unshift?)
+  for (let i = 0; i > -str1.length; i--) {
+    //console.log(str1[str1.length - 1 + i] + " " + str2[str2.length - 1 + i]);
+    if (str1[str1.length - 1 + i] == str2[str2.length - 1 + i]) {
+      returnStrArr.unshift(str1[str1.length - 1 + i]);
+    } else {
+      break;
+    }
+  }
+  return returnStrArr.join("");
+}
+
+console.log(longestCommonEnding("multiplication", "ration"));
+// ➞ "ation"
