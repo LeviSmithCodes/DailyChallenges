@@ -39,7 +39,7 @@ function convertToDecimal(arr) {
 // optimized
 
 function convertToDecimal2(arr) {
-  return arr.map(x => parseFloat(x) / 100);
+  return arr.map((x) => parseFloat(x) / 100);
 }
 
 // console.log(convertToDecimal2(["33%", "98.1%", "56.44%", "100%"]));
@@ -68,7 +68,7 @@ function validatePIN_optimized(pin) {
 
 function parityAnalysis(num) {
   let arr = num.toString().split("");
-  let arrInt = arr.map(x => parseInt(x));
+  let arrInt = arr.map((x) => parseInt(x));
   let sum = 0;
   for (let i = 0; i < arrInt.length; i++) {
     sum += arrInt[i];
@@ -127,10 +127,7 @@ function hackerSpeak(str) {
 // Reverse a string
 
 function reverse(str) {
-  return str
-    .split("")
-    .reverse()
-    .join("");
+  return str.split("").reverse().join("");
 }
 
 // without .reverse()
@@ -265,7 +262,7 @@ function afterNDays(arr, num) {
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday"
+    "Sunday",
   ];
   let resultArr = [];
   // loop through array
@@ -542,10 +539,7 @@ function isPalindrome(str) {
   str = str.match(/[a-zA-Z]/g).join("");
   // reverse string, compare to original
   console.log(str);
-  let rev = str
-    .split("")
-    .reverse()
-    .join("");
+  let rev = str.split("").reverse().join("");
   // return value
   return str == rev;
 }
@@ -722,7 +716,7 @@ function pop(arr) {
 
 // ALTERNATE
 function pop(state) {
-  const pop = state =>
+  const pop = (state) =>
     state.map((num, i) => {
       if (num !== 0) return num;
       if (i > state.length / 2) return state.length - i - 1;
@@ -772,5 +766,30 @@ function longestCommonEnding(str1, str2) {
   return returnStrArr.join("");
 }
 
-console.log(longestCommonEnding("multiplication", "ration"));
+//console.log(longestCommonEnding("multiplication", "ration"));
 // ➞ "ation"
+
+// -------------------------------------------------
+// 5/22/20 - been working new job for a while!
+
+// Create a function that takes an array of numbers and return both the minimum and maximum numbers, in that order.
+
+function minMax(arr) {
+  // loop through array setting both min and max values
+  var min = arr[0];
+  var max = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < min) {
+      min = arr[i];
+    }
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+  // return array
+  return [min, max];
+}
+
+console.log(minMax([1, 2, 3, 4, 5]));
+//➞ [1, 5]
