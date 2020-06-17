@@ -791,5 +791,64 @@ function minMax(arr) {
   return [min, max];
 }
 
-console.log(minMax([1, 2, 3, 4, 5]));
+//console.log(minMax([1, 2, 3, 4, 5]));
 //➞ [1, 5]
+
+// -----------------------------------------
+// 6/17/20
+// edabit
+
+// Create a function that takes an array and returns the sum of all numbers in the array.
+
+function getSumOfItems(arr) {
+  // initialize sum
+  var sum = 0;
+  // loop through array
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  // return sum
+  return sum;
+}
+
+//console.log(getSumOfItems([2, 7, 4]));
+// ➞ 13
+
+//-----------------------------------------
+
+// function factorial(num) {
+//   let x = num;
+//   let result = 0;
+//   while (x > 0) {
+//     console.log(x);
+//     result += x * (x - 1);
+//     x = x - 1;
+//   }
+//   return result;
+// }
+
+function factorial(num) {
+  if (num == 0) {
+    return 1;
+  }
+  let nextNum = num - 1;
+  return num * factorial(nextNum);
+}
+
+console.log(factorial(5));
+
+// trying to understand recursion lol
+// function recursion(str) {
+//   console.log("from the top");
+//   let myStr = "";
+//   let count = 7;
+//   myStr += str;
+//   console.log("myStr before: " + myStr);
+//   if (count > 0) {
+//     count -= 1;
+//     recursion(myStr);
+//   }
+//   console.log("myStr after: " + myStr);
+// }
+
+// recursion("hey ");
