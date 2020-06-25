@@ -835,7 +835,7 @@ function factorial(num) {
   return num * factorial(nextNum);
 }
 
-console.log(factorial(5));
+//console.log(factorial(5));
 
 // trying to understand recursion lol
 // function recursion(str) {
@@ -852,3 +852,33 @@ console.log(factorial(5));
 // }
 
 // recursion("hey ");
+
+//--------------------------------------------
+
+// Create a function that takes a string and returns a new string with its first and last characters swapped, except under three conditions:
+
+// If the length of the string is less than two, return "Incompatible.".
+// If the argument is not a string, return "Incompatible.".
+// If the first and last characters are the same, return "Two's a pair.".
+// Examples
+// flipEndChars("Cat, dog, and mouse.") ➞ ".at, dog, and mouseC"
+
+// flipEndChars("ada") ➞ "Two's a pair."
+
+// flipEndChars("Ada") ➞ "adA"
+
+// flipEndChars("z") ➞ "Incompatible."
+
+// flipEndChars([1, 2, 3]) ➞ "Incompatible."
+
+function flipEndChars(str) {
+  let beginningChar = str[0];
+  let endingChar = str[str.length - 1];
+  let strArr = str.split("");
+  strArr[0] = endingChar;
+  strArr[strArr.length - 1] = beginningChar;
+
+  return strArr.join("");
+}
+
+console.log(flipEndChars("Cat, dog, and mouse."));
