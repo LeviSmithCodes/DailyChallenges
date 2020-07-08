@@ -872,9 +872,18 @@ function factorial(num) {
 // flipEndChars([1, 2, 3]) ➞ "Incompatible."
 
 function flipEndChars(str) {
+  if (typeof str != "string" || str.length <= 1) {
+    return "Incompatible.";
+  }
+
   let beginningChar = str[0];
   let endingChar = str[str.length - 1];
   let strArr = str.split("");
+
+  if (beginningChar == endingChar) {
+    return "Two's a pair.";
+  }
+
   strArr[0] = endingChar;
   strArr[strArr.length - 1] = beginningChar;
 
@@ -882,3 +891,7 @@ function flipEndChars(str) {
 }
 
 console.log(flipEndChars("Cat, dog, and mouse."));
+
+// Finished 7/8/20, began earlier
+
+// ------------------------------------------------------
