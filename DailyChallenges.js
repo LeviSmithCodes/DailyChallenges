@@ -890,8 +890,28 @@ function flipEndChars(str) {
   return strArr.join("");
 }
 
-console.log(flipEndChars("Cat, dog, and mouse."));
+// console.log(flipEndChars("Cat, dog, and mouse."));
 
 // Finished 7/8/20, began earlier
 
 // ------------------------------------------------------
+
+// Create a function that takes an array of strings and returns the words that are exactly four letters.
+
+function isFourLetters(arr) {
+  // loop through, adding bits to array
+  let returnArr = [];
+  //console.log("length " + arr.length);
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i].length);
+    if (arr[i].length == 4) {
+      //console.log(arr[i]);
+      returnArr.push(arr[i]); // this was arr.push and messing things up
+      //break; // huh. lack of this was causing infinite loop.? no, the above was, and this was preventing things from progressing further.
+    }
+  }
+  //console.log(returnArr);
+  return returnArr;
+}
+
+console.log(isFourLetters(["Ryan", "Kieran", "Jason", "Matt"]));
