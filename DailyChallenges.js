@@ -914,7 +914,7 @@ function isFourLetters(arr) {
   return returnArr;
 }
 
-console.log(isFourLetters(["Ryan", "Kieran", "Jason", "Matt"]));
+// console.log(isFourLetters(["Ryan", "Kieran", "Jason", "Matt"]));
 
 //=========================================
 
@@ -926,3 +926,52 @@ console.log(isFourLetters(["Ryan", "Kieran", "Jason", "Matt"]));
 
 // Determine constant by finding difference between first two items in array
 // apply that to the last number and return
+
+function nextElement(arr) {
+  // let diffConst = arr[1] - arr[0];
+  // parens for readability
+  return arr[arr.length - 1] + (arr[1] - arr[0]);
+}
+
+// console.log(nextElement([3, 5, 7, 9]));
+// console.log(nextElement([-5, -6, -7]));
+// console.log(nextElement([2, 2, 2, 2, 2]));
+
+// =====================================================
+
+// A value is said to be "truthy" if it evaluates to true in a Boolean context. All values are truthy in JavaScript unless they're one of the following:
+
+// false
+// null
+// undefined
+// 0
+// NaN
+// ""
+// In JavaScript, an empty object and an empty array are both considered "truthy," but an empty string is considered false when evaluated as a Boolean (this behavior is what we call "falsey").
+
+// Create a function that takes an argument of any data type and returns 1 if it's truthy and 0 if it's falsy.
+
+function isTruthy(input) {
+  if (input) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+console.log(isTruthy(NaN));
+
+// isTruthy(0) ➞ 0
+
+console.log(isTruthy(false));
+//➞ 0
+
+// isTruthy("") ➞ 0
+
+console.log(isTruthy("false"));
+
+// isTruthy("false") ➞ 1
+
+// as easy as it appeared
+
+//=========================================================
