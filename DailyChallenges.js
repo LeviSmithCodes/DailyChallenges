@@ -959,19 +959,90 @@ function isTruthy(input) {
   }
 }
 
-console.log(isTruthy(NaN));
+// console.log(isTruthy(NaN));
 
 // isTruthy(0) ➞ 0
 
-console.log(isTruthy(false));
+// console.log(isTruthy(false));
 //➞ 0
 
 // isTruthy("") ➞ 0
 
-console.log(isTruthy("false"));
+// console.log(isTruthy("false"));
 
 // isTruthy("false") ➞ 1
 
 // as easy as it appeared
 
 //=========================================================
+
+// Create a function that takes an array as an argument and return an array of the sum of each of its slices. An array's slices are groups of consecutive values that add up to a maximum of 100. No slice's total sum should exceed 100.
+
+// Examples
+// sumOfSlices([10, 29, 13, 14, 15, 16, 17, 31, 20, 10, 29, 13, 14, 15, 16, 17, 31, 20, 100]) ➞ [97, 78, 87, 68, 100]
+
+/* Explanation:
+First slice: [10, 29, 13, 14, 15, 16]
+10 + 29 + 13 + 14 + 15 + 16 = 97
+The next value could not be included in this slice since the total would exceed 100
+
+Second slice: [17, 31, 20, 10]
+17 + 31 + 20 + 10 = 78
+The next value could not be included in this slice since the total would exceed 100
+
+And so on... */
+
+function sumOfSlices(arr) {
+  // while loop? if statement?
+  let sum = 0;
+  let returnArr = [];
+  // for loop
+  for (let i = 0; i < arr.length; i++) {
+    if (sum + arr[i] <= 100) {
+      // add current num to sum
+      sum += arr[i];
+      // } else if (arr[i] == 100) {
+      //   returnArr.push(arr[i]);
+    } else {
+      // push to return array
+      returnArr.push(sum);
+      // ahhhh, this is better than sum = 0. Values were getting lost.
+      if (arr[i] == 100) {
+        returnArr.push(arr[i]);
+      } else {
+        sum = arr[i];
+      }
+    }
+  }
+
+  // return return array
+  return returnArr;
+}
+
+
+RETURN TO THIS
+
+console.log(
+  sumOfSlices([
+    10,
+    29,
+    13,
+    14,
+    15,
+    16,
+    17,
+    31,
+    20,
+    10,
+    29,
+    13,
+    14,
+    15,
+    16,
+    17,
+    31,
+    20,
+    100,
+  ])
+);
+//➞ [97, 78, 87, 68, 100]
