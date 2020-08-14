@@ -992,17 +992,20 @@ The next value could not be included in this slice since the total would exceed 
 
 And so on... */
 
-function sumOfSlices(arr) {
+function sumOfSlices_firstAttempt(arr) {
   // while loop? if statement?
   let sum = 0;
   let returnArr = [];
   // for loop
   for (let i = 0; i < arr.length; i++) {
-    if (sum + arr[i] <= 100) {
+    if (sum + arr[i] < 100) {
       // add current num to sum
       sum += arr[i];
       // } else if (arr[i] == 100) {
       //   returnArr.push(arr[i]);
+    } else if (sum + arr[i] == 100) {
+      sum += arr[i];
+      returnArr.push(sum);
     } else {
       // push to return array
       returnArr.push(sum);
@@ -1019,8 +1022,107 @@ function sumOfSlices(arr) {
   return returnArr;
 }
 
+// Psuedo code take 2
+function sumOfSlices_secondAttempt(arr) {
+  // initialize sum and returnArray
+  let sum = 0;
+  let returnArr = [];
 
-RETURN TO THIS
+  // begin for loop over values
+  for (let i = 0; i < arr.length; i++) {
+    // if value + sum <= 100, add value to sum
+    if (arr[i] + sum <= 100) {
+      sum += arr[i];
+    }
+
+    // if sum == 100, push to array and reset sum
+    // jk, if  arr[i] is the last element, push sum
+    if (i == arr.length - 1) {
+      returnArr.push(sum);
+
+      // if not the last element and arr[i] + sum > 100, push the sum and set it to arr[i]
+    } else {
+      returnArr.push(sum);
+      sum = arr[i];
+
+      //   // if arr[i+1] exists and sum + arr[i+1] > 100, push to array and reset sum
+      // } else if (arr[i+1] && sum + arr[i+1] > 100){
+      //   returnArr.push(sum);
+      //   sum = 0;
+
+      //   // if arr[i+1] doesn't exist, push and return (?)
+      // } else if (!arr[i+1]){
+      //   returnArr.push(sum);
+      // }
+    }
+    // return
+  }
+  return returnArr;
+}
+
+// good LORD omg
+// I think it works, but there has GOT to be a more elegant way of getting there
+// IT PASSED OMG
+function sumOfSlices(arr) {
+  //initialize
+  let sum = 0;
+  let returnArr = [];
+
+  // for loop
+  for (let i = 0; i < arr.length; i++) {
+    // if last element, eval:
+    if (i == arr.length - 1) {
+      // if sum + arr[i] <= 100, push the sum of the two.
+      if (sum + arr[i] <= 100) {
+        returnArr.push(sum + arr[i]);
+      } else {
+        // else push them individually (and check to see if sum is zero)
+        if (sum != 0) {
+          returnArr.push(sum);
+        }
+        returnArr.push(arr[i]);
+      }
+    } else {
+      // if not last element
+      // eval if sum + arr[i] <= 100
+      if (sum + arr[i] <= 100) {
+        // if true, sum += arr[i]
+        sum += arr[i];
+      } else {
+        //else push sum, set sum = arr[i]
+        returnArr.push(sum);
+        sum = arr[i];
+      }
+    }
+  }
+  // return array
+  return returnArr;
+}
+
+// other person's soltuion with my vars and comments
+function sumOfSlices_other(arr) {
+  let returnArr = [];
+  let sum = 0;
+  //loop through every variable, last one is "dangling" as sum
+  for (let num of arr) {
+    if (sum + num <= 100) {
+      sum += num;
+    } else {
+      returnArr.push(sum);
+      sum = num;
+    }
+  }
+  // why can't this be a push? hurm oh, returning arr.push returns array length? yep.
+  // returnArr.push(sum);
+  // return returnArr;
+
+  return returnArr.concat(sum);
+}
+
+console.log(sumOfSlices([58, 3, 38, 99, 10]));
+console.log(sumOfSlices([13]));
+
+//RETURN TO THIS
 
 console.log(
   sumOfSlices([
