@@ -1119,32 +1119,76 @@ function sumOfSlices_other(arr) {
   return returnArr.concat(sum);
 }
 
-console.log(sumOfSlices([58, 3, 38, 99, 10]));
-console.log(sumOfSlices([13]));
+// console.log(sumOfSlices([58, 3, 38, 99, 10]));
+// console.log(sumOfSlices([13]));
 
-//RETURN TO THIS
-
-console.log(
-  sumOfSlices([
-    10,
-    29,
-    13,
-    14,
-    15,
-    16,
-    17,
-    31,
-    20,
-    10,
-    29,
-    13,
-    14,
-    15,
-    16,
-    17,
-    31,
-    20,
-    100,
-  ])
-);
+// console.log(
+//   sumOfSlices([
+//     10,
+//     29,
+//     13,
+//     14,
+//     15,
+//     16,
+//     17,
+//     31,
+//     20,
+//     10,
+//     29,
+//     13,
+//     14,
+//     15,
+//     16,
+//     17,
+//     31,
+//     20,
+//     100,
+//   ])
+// );
 //➞ [97, 78, 87, 68, 100]
+
+// ==========================================
+
+// Create a function that take an array of numbers and return the smallest number in the set
+function findSmallestNum(arr) {
+  // initialize value with first value (arr[0])
+  let smallestNum = arr[0];
+  //for loop, starting at [1]
+  for (let i = 1; i < arr.length; i++) {
+    // if arr[i]< value, replace
+    if (arr[i] < smallestNum) {
+      smallestNum = arr[i];
+    }
+  }
+  // return
+  return smallestNum;
+}
+
+// ==========================================
+// Hard - felt Medium
+
+// Write a functions that returns the Least Common Multtiple (LCM) of two numbers
+// good visualiazation: https://www.mathsisfun.com/least-common-multiple.html
+
+function lcm(n1, n2) {
+  // possible approach: build arrays of all multiples of each, and then somehow find the first match? hurm.
+  // ooo, iterate over one multiple at a time, adding it to the appropriate array
+  let n1Arr = [];
+  let n2Arr = [];
+  // give it somewhere to stop
+  for (let i = 1; i < 999999999; i++) {
+    let newMultiple1 = n1 * i;
+    let newMultiple2 = n2 * i;
+
+    n1Arr.push(newMultiple1);
+    n2Arr.push(newMultiple2);
+
+    if (n1Arr.includes(newMultiple2)) {
+      return newMultiple2;
+    } else if (n2Arr.includes(newMultiple1)) {
+      return newMultiple1;
+    }
+  }
+}
+
+console.log(lcm(8, 5));
