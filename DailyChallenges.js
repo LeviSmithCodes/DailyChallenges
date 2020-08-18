@@ -1191,4 +1191,67 @@ function lcm(n1, n2) {
   }
 }
 
-console.log(lcm(8, 5));
+//console.log(lcm(8, 5));
+
+// ====================================
+
+// Given an array of numbers, negate all elements contained within.
+function negate(arr) {
+  let returnArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    returnArr.push(arr[i] * -1);
+  }
+  return returnArr;
+}
+
+// console.log(negate([-1, 2, -3, 4]));
+// ➞ [1, -2, 3, -4]
+
+// ================================
+// Create a function that returns true if two arrays contain identical values, and false otherwise.
+
+// broken code
+function checkEquals_broken(arr1, arr2) {
+  if (arr1 === arr2) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkEquals(arr1, arr2) {
+  if (arr1.join(",") == arr2.join(",")) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+//console.log(checkEquals([1, 2], [1, 3]));
+// ➞ false
+// Good so far...
+
+//console.log(checkEquals([1, 2], [1, 2]));
+// ➞ false
+// Yikes! What happened?
+
+// I believe (based on what I read in the codeburst article about reference vs value types) that the arrays are stored in two different "addresses", and both equality and strict equality for arrays compares the reference address, not the final value.
+
+// part 2
+// "It works in most cases, but on some cases it fails. This confuses him, can you spot the error and fix it?"
+
+console.log(checkEquals([1, 2], [1, 3]));
+//➞ false
+
+console.log(checkEquals([1, 2], [1, 2]));
+//➞ true
+
+console.log(checkEquals([4, 5, 6], [4, 5, 6]));
+//➞ true
+
+console.log(checkEquals([4, 7, 6], [4, 5, 6]));
+//➞ false
+
+console.log(checkEquals([1, 12], [11, 2]));
+//➞ false
+// Ah - joining these results in the strings "112" and "112" which are identical. Join using something else?
