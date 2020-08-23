@@ -1240,18 +1240,44 @@ function checkEquals(arr1, arr2) {
 // part 2
 // "It works in most cases, but on some cases it fails. This confuses him, can you spot the error and fix it?"
 
-console.log(checkEquals([1, 2], [1, 3]));
+//console.log(checkEquals([1, 2], [1, 3]));
 //➞ false
 
-console.log(checkEquals([1, 2], [1, 2]));
+//console.log(checkEquals([1, 2], [1, 2]));
 //➞ true
 
-console.log(checkEquals([4, 5, 6], [4, 5, 6]));
+//console.log(checkEquals([4, 5, 6], [4, 5, 6]));
 //➞ true
 
-console.log(checkEquals([4, 7, 6], [4, 5, 6]));
+//console.log(checkEquals([4, 7, 6], [4, 5, 6]));
 //➞ false
 
-console.log(checkEquals([1, 12], [11, 2]));
+//console.log(checkEquals([1, 12], [11, 2]));
 //➞ false
 // Ah - joining these results in the strings "112" and "112" which are identical. Join using something else?
+
+// ===============================
+
+//You're given a string of words. You need to find the word "Nemo", and return a string like this: "I found Nemo at [the order of the word you find nemo]!".
+
+//If you can't find Nemo, return "I can't find Nemo :(".
+
+function findNemo(sentence) {
+  let sentenceArr = sentence.split(" ");
+  let nemoPosition = -1;
+  for (let i = 0; i < sentenceArr.length; i++) {
+    if (sentenceArr[i] == "Nemo") {
+      nemoPosition = i;
+      break;
+    }
+  }
+  if (nemoPosition == -1) {
+    return "I can't find Nemo :(";
+  } else {
+    // string interpolation requires backticks, not single or double quotes
+    return `I found Nemo at ${nemoPosition + 1}!`;
+  }
+}
+
+console.log(findNemo("I am finding Nemo !"));
+//➞ "I found Nemo at 4!"
