@@ -1279,5 +1279,27 @@ function findNemo(sentence) {
   }
 }
 
-console.log(findNemo("I am finding Nemo !"));
+//console.log(findNemo("I am finding Nemo !"));
 //➞ "I found Nemo at 4!"
+
+// ================================================
+
+// Create a function that counts how many characters make up a rectangular shape. You will be given a array of strings.
+
+function countCharacters(arr) {
+  // initialize count at zero
+  // since it's rectangular, multiply the length of the string at position zero by the number of elements in the array
+  let count = 0;
+  if (arr[0]) {
+    count = arr[0].length * arr.length;
+  }
+  return count;
+}
+
+console.log(countCharacters(["###", "###", "###"]));
+//➞ 9
+
+// solutions from others:
+function countCharacters_other(arr) {
+  return arr.join("").length;
+}
