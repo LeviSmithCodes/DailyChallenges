@@ -1296,10 +1296,39 @@ function countCharacters(arr) {
   return count;
 }
 
-console.log(countCharacters(["###", "###", "###"]));
+// console.log(countCharacters(["###", "###", "###"]));
 //➞ 9
 
 // solutions from others:
 function countCharacters_other(arr) {
   return arr.join("").length;
+}
+
+// ===============================================
+
+// ah. in JS ^ the bitwise XOR operator
+function cubeSquareRoot(num) {
+  return Math.sqrt(Math.pow(num, 3));
+}
+
+//console.log(cubeSquareRoot(81));
+
+// ==============================================
+// Create a function that takes a string as its argument and returns the string in reversed order.
+
+function reverse(str) {
+  // probably a more elegant way of doing this, but split into array, loop through array backwards (or push to front? What's that called?), rejoin into string
+  let arr = str.split("");
+  let returnArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    returnArr.unshift(arr[i]);
+  }
+  return returnArr.join("");
+}
+
+console.log(reverse("Hello World!"));
+
+// other's solution - one liner!
+function reverse_elegant(str) {
+  return str.split("").reverse().join("");
 }
