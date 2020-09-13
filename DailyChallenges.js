@@ -1326,9 +1326,80 @@ function reverse(str) {
   return returnArr.join("");
 }
 
-console.log(reverse("Hello World!"));
+//console.log(reverse("Hello World!"));
 
 // other's solution - one liner!
 function reverse_elegant(str) {
   return str.split("").reverse().join("");
 }
+
+// ======================================
+
+// Create a function that returns true if the given circular areas are intersecting, otherwise return false. The circles are given as two arrays containing the values in the following order:
+
+// Radius of the circle.
+// Center position on the x-axis.
+// Center position on the y-axis.
+// Examples
+// isCircleCollision([10, 0, 0], [10, 10, 10]) ➞ true
+
+// isCircleCollision([1, 0, 0], [1, 10, 10]) ➞ false
+
+// unsure as to how to start, peeked at resources
+// from resources: This algorithm works by taking the centre points of the two circles and ensuring the distance between the centre points are less than the two radii added together.
+
+function isCircleCollision(c1, c2) {
+  // ... generate array of every point in the circle? ... um. nope.
+
+  // generate center points of two circles
+  // "The slice() method selects the elements starting at the given start argument, and ends at, but does not include, the given end argument."
+  let center1xy = c1.slice(1, 3);
+  let center2xy = c2.slice(1, 3);
+  //return center1xy[0] + "  " + center2xy[0];
+
+  // console.log("center 1xy: " + center1xy);
+  // console.log("center 2xy: " + center2xy);
+
+  // find distance between center points
+  // d = sqrt((x2 - x1)^2 + (y2 -y1)^2)
+  // or d = sqrt((x1 - x2)^2 + (y1 -y2)^2) (?) - squaring removes negatives
+  // https://www.mathsisfun.com/algebra/distance-2-points.html
+  // console.log("center2xy[0] (X2): " + center2xy[0]);
+  // console.log("center1xy[0] (X1): " + center1xy[0]);
+  // console.log("center2xy[1] (Y2): " + center2xy[1]);
+  // console.log("center1xy[1] (Y1): " + center1xy[1]);
+  let distance = Math.sqrt(
+    Math.pow(center1xy[0] - center2xy[0], 2) +
+      Math.pow(center1xy[1] - center2xy[1], 2)
+  );
+
+  // troubleshooting - something seems wrong with order of operations??
+  // BAHAHAHAHAH "^" is the bitwise XOR operator. hilarious. Use Math.pow or x*x. lol.
+  // console.log("(x1 - x2)^2: " + ((center1xy[0] - center2xy[0]) ^ 2));
+  // console.log("(x1 - x2)^2: " + Math.pow(center1xy[0] - center2xy[0], 2));
+
+  // return distance;
+  // return Math.sqrt(10 ^ (2 + 10) ^ 2);
+
+  // add two radii together
+  let radiiSum = parseInt(c1.slice(0, 1)) + parseInt(c2.slice(0, 1));
+  // return radiiSum;
+
+  // check if distance between center points is less than two radii added together
+  // return true or false
+  return distance < radiiSum;
+}
+
+//console.log(isCircleCollision([10, 0, 0], [10, 10, 10]));
+//➞ true
+
+//console.log(isCircleCollision([1, 0, 0], [1, 10, 10]));
+//➞ false
+
+// OTHER SOLUTION FROM EDABIT
+
+function isCircleCollision2(c1, c2) {
+  return c1[0] + c2[0] > Math.hypot(c2[2] - c1[2], c2[1] - c1[1]);
+}
+
+console.log(isCircleCollision2([10, 0, 0], [10, 10, 10]));
