@@ -1402,4 +1402,26 @@ function isCircleCollision2(c1, c2) {
   return c1[0] + c2[0] > Math.hypot(c2[2] - c1[2], c2[1] - c1[1]);
 }
 
-console.log(isCircleCollision2([10, 0, 0], [10, 10, 10]));
+// console.log(isCircleCollision2([10, 0, 0], [10, 10, 10]));
+
+// ======================================
+
+// Create a function that determines whether a shopping order is eligible for free shipping. An order is eligible for free shipping if the total cost of items purchased exceeds $50.00.
+
+// take in the ... dictionary? Wow, it's been a while.
+
+// begin sum at zero, loop over each element, adding cost to sum
+
+// check if sum > 50 and return bool
+
+function freeShipping(order) {
+  let sum = 0;
+  for (var item in order) {
+    sum += order[item];
+  }
+  return sum > 50;
+}
+
+console.log(freeShipping({ Shampoo: 5.99, "Rubber Ducks": 15.99 })); // ➞ false
+
+console.log(freeShipping({ "Flatscreen TV": 399.99 })); //  ➞ true
