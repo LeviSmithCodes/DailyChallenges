@@ -1489,3 +1489,30 @@ console.log(isAstonishing(2002077));
 // Partition 4: a = 2002 and b = 077 = 77
 // Sum from b up to a: 77 + 78 + 79 + ... + 2002 = 2002077
 // It's Astonishing and partition a is greater than partition b
+
+/////////////////////////////////////////////////////////////
+
+// Given an array of prices prices and a "supposed" total t, return true if there is a hidden fee added to the total (i.e. the total is greater than the sum of prices), otherwise return false.
+
+// Examples
+// hasHiddenFee(["$2", "$4", "$1", "$8"], "$15") ➞ false
+
+// hasHiddenFee(["$1", "$2", "$3"], "$6") ➞ false
+
+// hasHiddenFee(["$1"], "$4") ➞ true
+// Notes
+// Remember that each price is given as a string.
+// All $ signs will be at the beginning of the number.
+
+function hasHiddenFee(prices, t) {
+  // initialize prices sum
+  let sum = 0;
+  // loop through prices, extracting and adding to sum
+  for (let i = 0; i < prices.length; i++) {
+    sum += parseInt(prices[i].substring(1));
+  }
+  // return comparison to total
+  return sum != parseInt(t.substring(1));
+}
+
+console.log(hasHiddenFee(["$1", "$2", "$3"], "$6")); // ➞ false
