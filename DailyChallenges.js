@@ -348,7 +348,7 @@ function unique2(str) {
 
 // [] how can I use a data structure to reduce time complexity?
 
-console.log(unique2("asdfghjkl"));
+//console.log(unique2("asdfghjkl"));
 
 // -------------------------------------------------------
 // A number is left-heavy if the digits on the left side are larger than the digits on the right. It is right-heavy if the digits on the right side are larger than the digits on the left. Else, it is balanced.
@@ -699,7 +699,7 @@ function pop(arr) {
   // find index of focus
 
   let centerIndex = arr.indexOf(Math.max(...arr));
-  console.log("center index: " + centerIndex);
+  //console.log("center index: " + centerIndex);
   // have equation relating index to desired value
   for (let i = 0; i < arr.length; i++) {
     if (i < centerIndex) {
@@ -1471,13 +1471,13 @@ function isAstonishing(num) {
   // return false by default
 }
 
-console.log(isAstonishing(15));
+// console.log(isAstonishing(15));
 //➞ "AB-Astonishing"
 // There is only one possible partition: a = 1 and b = 5
 // Sum from a up to b: 1 + 2 + 3 + 4 + 5 = 15
 // It's Astonishing and partition a is lower than partition b
 
-console.log(isAstonishing(2002077));
+// console.log(isAstonishing(2002077));
 //➞ "BA-Astonishing"
 // There are six possible partitions
 // Partition 1: a = 2 and b = 002077 = 2077 (leading zeros are not considered)
@@ -1515,4 +1515,48 @@ function hasHiddenFee(prices, t) {
   return sum != parseInt(t.substring(1));
 }
 
-console.log(hasHiddenFee(["$1", "$2", "$3"], "$6")); // ➞ false
+// console.log(hasHiddenFee(["$1", "$2", "$3"], "$6")); // ➞ false
+
+// ==================================================
+
+// Write a function that takes an integer minutes and converts it to seconds.
+
+function convert(minutes) {
+  return minutes * 60;
+}
+
+//console.log(convert(2));
+
+// ==================================================
+
+// Create a function that will return an integer number corresponding to the amount of digits in the given integer num.
+
+// num_of_digits(1000) ➞ 4
+
+// my solution using strings and regex
+function num_of_digits(digits) {
+  var regex = /[0-9]/g;
+  digits = String(digits);
+  return digits.match(regex).length;
+}
+
+console.log(num_of_digits(12345));
+
+// const paragraph = "The quick brown fox jumps over the lazy dog. It barked.";
+// const regex = /[A-Z]/g;
+// const found = paragraph.match(regex);
+// console.log(found);
+
+// regex examples
+// var regex = /hello/;
+// var str = "hello world";
+// var result = regex.exec(str);
+// console.log(result);
+
+// comment blocks: ctrl + k + c to add
+// ctrl + k + u to remove
+
+//var regex = /hello/;
+//console.log(regex.test("helxlo world"));
+
+// ==================================================
