@@ -1540,7 +1540,7 @@ function num_of_digits(digits) {
   return digits.match(regex).length;
 }
 
-console.log(num_of_digits(12345));
+// console.log(num_of_digits(12345));
 
 // const paragraph = "The quick brown fox jumps over the lazy dog. It barked.";
 // const regex = /[A-Z]/g;
@@ -1560,3 +1560,19 @@ console.log(num_of_digits(12345));
 //console.log(regex.test("helxlo world"));
 
 // ==================================================
+
+// Create a function which returns the number of true values there are in an array.
+
+// countTrue([true, false, false, true, false]) ➞ 2
+
+function countTrue(array) {
+  let count = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] == true) {
+      count += 1;
+    }
+  }
+  return count;
+}
+
+console.log(countTrue([true, false, false, true, true]));
