@@ -1575,4 +1575,77 @@ function countTrue(array) {
   return count;
 }
 
-console.log(countTrue([true, false, false, true, true]));
+// console.log(countTrue([true, false, false, true, true]));
+
+// =======================================
+
+// Create a function that takes an array of numbers and return "Boom!" if the digit 7 appears in the array. Otherwise, return "there is no 7 in the array".
+
+function sevenBoom(arr) {
+  let contains = "there is no 7 in the array";
+  arr = arr.toString().split("");
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i] == 7) {
+      contains = "Boom!";
+    }
+  }
+  return contains;
+}
+
+// console.log(sevenBoom([1, 2, 3, 4, 5, 6, 7]));
+
+// now with regex, as from other solution
+
+function sevenBoomReg(arr) {
+  if (/7/.test(arr)) {
+    // Important! the regex pattern preceeds what is being tested!
+    return "Boom!";
+  }
+  return "there is no 7 in the array";
+}
+
+// console.log(sevenBoomReg([1, 2, 3, 4, 5, 6, 8]));
+
+// ===========================
+
+//A boomerang is a V-shaped sequence that is either upright or upside down. Specifically, a boomerang can be defined as: sub-array of length 3, with the first and last digits being the same and the middle digit being different.
+
+// Some boomerang examples:
+
+// [3, 7, 3], [1, -1, 1], [5, 6, 5]
+
+// Create a function that returns the total number of boomerangs in an array.
+
+// Be aware that boomerangs can overlap
+
+// [5, 5, 5] (triple identical digits) is NOT considered a boomerang because the middle digit is identical to the first and last.
+
+function countBoomerangs(arr) {
+  let boomCount = 0;
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i] == arr[i + 2] && arr[i] != arr[i + 1]) {
+      boomCount++;
+    }
+  }
+  return boomCount;
+}
+
+// console.log(countBoomerangs([9, 5, 9, 5, 1, 1, 1]));
+
+// reconstructing the solution with less code from another participant
+
+const countBoomerangs2 = (arr) =>
+  arr.filter((_, i) => arr[i] == arr[i + 2] && arr[i] != arr[i + 1]).length;
+// I have no idea why the inclusion of "_," makes this work.
+// filter((element) => { /* … */ })
+// filter((element, index) => { /* … */ })
+// oh. I think it names the element for further use, so in this it just acts as a placeholder.
+
+console.log(countBoomerangs2([9, 5, 9, 5, 1, 1, 1, 1]));
+
+// const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+// const result = words.filter(word => word.length > 6);
+
+// console.log(result);
+// Expected output: Array ["exuberant", "destruction", "present"]
