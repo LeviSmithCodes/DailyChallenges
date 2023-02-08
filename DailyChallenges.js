@@ -1641,7 +1641,7 @@ const countBoomerangs2 = (arr) =>
 // filter((element, index) => { /* … */ })
 // oh. I think it names the element for further use, so in this it just acts as a placeholder.
 
-console.log(countBoomerangs2([9, 5, 9, 5, 1, 1, 1, 1]));
+// console.log(countBoomerangs2([9, 5, 9, 5, 1, 1, 1, 1]));
 
 // const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
 
@@ -1649,3 +1649,37 @@ console.log(countBoomerangs2([9, 5, 9, 5, 1, 1, 1, 1]));
 
 // console.log(result);
 // Expected output: Array ["exuberant", "destruction", "present"]
+
+// ==================================
+
+// Create a function that takes a string as an argument. The function must return a string containing 1s and 0s based on the string argument's words. If any word in the argument is not equal to "zero" or "one" (case insensitive), you should ignore it. The returned string's length should be a multiple of 8, if the string is not a multiple of 8 you should remove the numbers in excess.
+
+// textToNumberBinary("zero one zero one zero one zero one") ➞ "01010101"
+
+function textToNumberBinary(str) {
+  let splitStr = str.split(" ");
+  let newArr = [];
+  for (i = 0; i < splitStr.length; i++) {
+    if (splitStr[i].toLowerCase() == "zero") {
+      newArr.push("0");
+    } else if (splitStr[i].toLowerCase() == "one") {
+      newArr.push("1");
+    }
+  }
+  console.log("length: " + newArr.length);
+  console.log("remainder: " + (newArr.length % 8));
+  let newArrLength = newArr.length; // created a variable because the value was changing in the for loop
+  if (newArrLength % 8 != 0) {
+    for (i = 0; i < newArrLength % 8; i++) {
+      newArr.pop();
+    }
+  }
+  return newArr.join("");
+}
+
+console.log(textToNumberBinary("zero one zero one zero one zero one one"));
+console.log(textToNumberBinary("one zero one"));
+
+// REMEMBER: push(), pop(), shift(), unshift()
+// also % - remainder
+// really liked this one!
