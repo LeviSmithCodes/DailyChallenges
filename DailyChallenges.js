@@ -1677,9 +1677,32 @@ function textToNumberBinary(str) {
   return newArr.join("");
 }
 
-console.log(textToNumberBinary("zero one zero one zero one zero one one"));
-console.log(textToNumberBinary("one zero one"));
+// console.log(textToNumberBinary("zero one zero one zero one zero one one"));
+// console.log(textToNumberBinary("one zero one"));
 
 // REMEMBER: push(), pop(), shift(), unshift()
 // also % - remainder
 // really liked this one!
+
+// ===================================================
+
+// Given an input string, reverse the string word by word, the first word will be the last, and so on.
+
+function reverseWords(str) {
+  let splitStr = str.split(" ");
+  let newArr = [];
+  let arrLength = splitStr.length;
+  for (let i = arrLength - 1; i >= 0; i--) {
+    newArr.push(splitStr[i]);
+  }
+  return newArr.join(" ");
+}
+
+//console.log(reverseWords("Hello world new"));
+
+// from other solutions - lmao - forgot about reverse
+function reverseWordsBetter(str) {
+  return str.split(" ").reverse().join(" ");
+}
+
+console.log(reverseWordsBetter("Hello world new"));
