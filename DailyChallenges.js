@@ -1744,3 +1744,43 @@ function timeForMilkAndCookies2nd(date) {
 
 console.log(timeForMilkAndCookies2nd(new Date(2013, 11, 24)));
 //➞ true
+
+// ===================================
+
+// Create a function that calculates the number of different squares in an n * n square grid.
+
+// numberSquares(2) ➞ 5
+
+// numberSquares(4) ➞ 30
+
+// numberSquares(5) ➞ 55
+
+// Explanation
+
+//     If n = 0 then the number of squares is 0
+//     If n = 1 then the number of squares is 1 + 0 = 1
+//     If n = 2 then the number of squares is 2^2 + 1 = 4 + 1 = 5
+//     If n = 3 then the number of squares is 3^2 + 5 = 9 + 5 = 14
+
+// As you can see, for each value of n the number of squares is n squared + the number of squares from the previous value of n.
+
+// me
+// okay so it includes all squares - like the boundary one, and each possible border combination.
+// a for loop starting from one would be best, and accrue the number into a variable that gets returned
+// oh. It's only the most recent calculation, not all the preceding ones. oops.easily fixed by updating the inital value if i to num - 1. ... right?!
+// OH IT'S SQUARED NOT RAISED TO THE POWER OF I DOH LMAO I'M NOT MAKING CUBES OVER HERE
+// okay one step closer. Do I need to run all the calculations from i = 1 and only keep the last two?
+// nope, all
+
+function numberSquares(num) {
+  let totalNum = 0;
+  for (i = 1; i <= num; i++) {
+    totalNum += Math.pow(i, 2);
+    console.log("i: " + i + " this totalNum: " + totalNum);
+  }
+  return totalNum;
+}
+
+// there's probably a more elegant way to do this
+
+console.log(numberSquares(5));
