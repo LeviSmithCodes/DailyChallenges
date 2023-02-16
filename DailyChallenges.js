@@ -1776,11 +1776,38 @@ function numberSquares(num) {
   let totalNum = 0;
   for (i = 1; i <= num; i++) {
     totalNum += Math.pow(i, 2);
-    console.log("i: " + i + " this totalNum: " + totalNum);
+    //console.log("i: " + i + " this totalNum: " + totalNum);
   }
   return totalNum;
 }
 
 // there's probably a more elegant way to do this
 
-console.log(numberSquares(5));
+//console.log(numberSquares(5));
+
+// =======================================
+
+// Create a function that determines whether a number is Oddish or Evenish. A number is Oddish if the sum of all of its digits is odd, and a number is Evenish if the sum of all of its digits is even. If a number is Oddish, return "Oddish". Otherwise, return "Evenish".
+
+// For example, oddishOrEvenish(121) should return "Evenish", since 1 + 2 + 1 = 4. oddishOrEvenish(41) should return "Oddish", since 4 + 1 = 5.
+
+// oddishOrEvenish(43) ➞ "Oddish"
+// 4 + 3 = 7
+// 7 % 2 = 1
+
+function oddishOrEvenish(num) {
+  let arr = num.toString().split("");
+  let sum = 0;
+  for (i = 0; i < arr.length; i++) {
+    sum += parseInt(arr[i]);
+  }
+  if (sum % 2 == 0) {
+    return "Evenish";
+  } else {
+    return "Oddish";
+  }
+}
+
+console.log(oddishOrEvenish(48));
+
+// is there a way to do this without converting to strings?
